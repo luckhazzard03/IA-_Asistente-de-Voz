@@ -1,13 +1,13 @@
 /* Light mode */
 body {
-  background-color: #d6ddec;
+  background-color: #acfff8;
   color: #121717;
 }
 
 /* Dark mode */
 .dark-mode {
   background-color: #121717;
-  color: #c9c9c9;
+  color: #abf2ff;
 }
 
 #chat-window {
@@ -148,7 +148,7 @@ body {
 
 .loading-dots.my-loading {
   transform: rotateY(180deg);
-  background-color: #e7f9d8;
+  background-color: #02f5ac;
   float: right;
 }
 
