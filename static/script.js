@@ -37,15 +37,31 @@ const getSpeechToText = async (userRecording) => {
 };
 
 const processUserMessage = async (userMessage) => {
-    let response = await fetch(baseUrl + "/process-message", {
-        method: "POST",
-        headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify({ userMessage: userMessage, voice: voiceOption }),
-    });
-    response = await response.json();
-    console.log(response);
-    return response;
+    try {
+        let response = await fetch(baseUrl + "/process-message", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ userMessage: userMessage, voice: voiceOption }),
+        });
+
+        // Verifica si la respuesta es correcta
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.statusText);
+        }
+
+        response = await response.json();
+        console.log(response);
+        return response;
+    } catch (error) {
+        console.error('Error al procesar el mensaje:', error);
+        // Puedes mostrar un mensaje al usuario o manejar el error de otra manera
+        return { openaiResponseText: "Lo siento, ocurrió un error al procesar tu solicitud." };
+    }
 };
+
 
 const cleanTextInput = (value) => {
     return value

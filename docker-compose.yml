@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: my_app
+    working_dir: /app
+    volumes:
+      - .:/app  # Mapea el directorio local al contenedor
+      - /app/venv  # Volumen para el entorno virtual, para que no se sobrescriba al reiniciar el contenedor
+    ports:
+      - "8000:8000"  # Asegúrate de usar el puerto que necesites para tu aplicación
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}  # Aquí usamos la variable de entorno del archivo .env
+      REQUESTS_CA_BUNDLE: "/etc/ssl/certs/ca-certificates.crt"
+      SSL_CERT_FILE: "/etc/ssl/certs/ca-certificates.crt"
+    command: /app/venv/bin/python -u server.py  # Usar el Python del entorno virtual
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge

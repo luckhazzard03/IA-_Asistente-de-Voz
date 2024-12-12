@@ -37,7 +37,7 @@
       "baseModelsStore": {
         "type": "UrlService",
         "healthCheckSuffix": "/",
-        "baseUrl": "http://127.0.0.1:3333/"
+        "baseUrl": "https://sn-watson-tts.labs.skills.network"
       }
     }
   }
