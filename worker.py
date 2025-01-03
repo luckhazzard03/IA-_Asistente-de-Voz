@@ -40,11 +40,17 @@ def speech_to_text(audio_binary):
 
 
 def text_to_speech(text, voice=""):
+<<<<<<< HEAD
     """
     Convierte el texto en un archivo de audio utilizando la API de Watson Text-to-Speech.
     """
     base_url = 'https://sn-watson-tts.labs.skills.network'
     api_url = f"{base_url}/text-to-speech/api/v1/synthesize?output=output_text.wav"
+=======
+    # Configurar la URL de la API HTTP de Watson Text-to-Speech
+    base_url = 'https://sn-watson-tts.labs.skills.network'
+    api_url = base_url + '/text-to-speech/api/v1/synthesize?output=output_text.wav'
+>>>>>>> 96aa8fd864cffc98d4e7185071841bf649288915
 
     # Agregar parámetro de voz si se especifica
     if voice and voice != "default":
